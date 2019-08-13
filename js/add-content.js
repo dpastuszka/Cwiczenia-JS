@@ -12,14 +12,14 @@ var hotel = {
 
 var hotelName, roomPrice, specialPrice;
 
-hotelName = getElementById('hotelName');
-roomPrice = getElementById('roomPrice');
-specialPrice = getElementById('specialPrice');
+hotelName = document.getElementById('hotelName');
+roomPrice = document.getElementById('roomPrice');
+specialPrice = document.getElementById('specialPrice');
 
 hotelName.textContent = hotel.name;
 roomPrice.textContent = hotel.roomPrice.toFixed(2) + ' zł';
 
-specialPrice.textContent = hotel.offerPrice() + ' zł';
+specialPrice.textContent = hotel.offerPrice().toFixed(2) + ' zł';
 
 var expiryMsg;
 var today;
@@ -27,7 +27,7 @@ var elEnds;
 
 function offerExpires(today) {
     var weekFromToday, day, date, month, year, dayNames, monthNames;
-    weekFromToday = newDate(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+    weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
     dayNames = ['niedzielę', 'poniedziałek', 'wtorek', 'środę', 'czwartek', 'piątek', 'sobotę'];
     monthNames = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
 
@@ -40,7 +40,7 @@ function offerExpires(today) {
     return expiryMsg;
 }
 
-today = newDate();
+today = new Date();
 
 elEnds = document.getElementById('offerEnds');
 elEnds.innerHTML = offerExpires(today);
